@@ -17,6 +17,7 @@ const port=process.env.PORT || 4000;
 app.use(express.json());
 app.use(cors({
     origin : "https://food-delivery-frontend-5lem.onrender.com",
+    origin : "https://food-delivery-admin-jrra.onrender.com"
     credentials : true
 }))
 

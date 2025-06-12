@@ -15,11 +15,17 @@ const port=process.env.PORT || 4000;
 
 //middleware
 app.use(express.json());
+
+const allowedOrigins = [
+  "https://food-delivery-admin-jrra.onrender.com",
+  "https://your-frontend-url.onrender.com"
+];
+
 app.use(cors({
-    origin : "https://food-delivery-frontend-5lem.onrender.com",
-    origin : "https://food-delivery-admin-jrra.onrender.com"
-    credentials : true
-}))
+  origin: allowedOrigins,
+  credentials: true
+}));
+
 
 //db connection
 connectDB();

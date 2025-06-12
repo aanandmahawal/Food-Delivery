@@ -64,7 +64,12 @@ const registerUser=async (req,res)=>{
 
         const user=await newUser.save()
         const token=createToken(user._id)
-        res.json({success:true,token})
+        res.cookie("token",token,{
+           httpOnly:true,
+          maxAge:7*24*60*60*1000,
+          sameSite:"None",
+          secure:true
+    })
 
 
     }

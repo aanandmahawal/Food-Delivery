@@ -18,7 +18,7 @@ app.use(express.json());
 
 const allowedOrigins = [
   "https://food-delivery-admin-jrra.onrender.com",
-  "https://your-frontend-url.onrender.com"
+  "https://food-delivery-frontend-5lem.onrender.com"
 ];
 
 app.use(cors({

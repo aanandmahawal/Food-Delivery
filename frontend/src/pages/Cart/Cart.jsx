@@ -5,14 +5,18 @@ import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
   const {
-    cartItems = {}, // default to empty object
-    food_list = [], // default to empty array
+    cartItems = {}, 
+    food_list = [], 
     removeFromCart,
     getTotalCartAmount,
     url
   } = useContext(StoreContext);
 
   const navigate = useNavigate();
+
+  const totalAmount = getTotalCartAmount();
+  const deliveryFee = totalAmount === 0 ? 0 : 2;
+  const finalAmount = totalAmount + deliveryFee;
 
   return (
     <div>
@@ -27,13 +31,18 @@ const Cart = () => {
         </div>
         <br />
         <hr />
+
         {food_list.map((item) => {
+          if (!item?._id) return null;
           const quantity = cartItems[item._id] || 0;
           if (quantity > 0) {
             return (
               <div key={item._id}>
                 <div className="cart-items-title cart-items-item">
-                  <img src={`${url}/images/${item.image}`} alt={item.name} />
+                  <img
+                    src={item.image ? `${url}/images/${item.image}` : '/default.png'}
+                    alt={item.name || 'Food'}
+                  />
                   <p>{item.name}</p>
                   <p>${item.price}</p>
                   <p>{quantity}</p>
@@ -46,6 +55,12 @@ const Cart = () => {
           }
           return null;
         })}
+
+        {totalAmount === 0 && (
+          <div className="empty-cart-msg">
+            <p>Your cart is empty.</p>
+          </div>
+        )}
       </div>
 
       <div className="cart-bottom">
@@ -54,22 +69,22 @@ const Cart = () => {
           <div>
             <div className="cart-total-details">
               <p>Subtotal</p>
-              <p>${getTotalCartAmount()}</p>
+              <p>${totalAmount}</p>
             </div>
             <hr />
             <div className="cart-total-details">
               <p>Delivery Fee</p>
-              <p>${getTotalCartAmount() === 0 ? 0 : 2}</p>
+              <p>${deliveryFee}</p>
             </div>
             <hr />
             <div className="cart-total-details">
               <b>Total</b>
-              <b>${getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 2}</b>
+              <b>${finalAmount}</b>
             </div>
           </div>
           <button
             onClick={() => navigate('/order')}
-            disabled={getTotalCartAmount() === 0}
+            disabled={totalAmount === 0}
           >
             PROCEED TO CHECKOUT
           </button>
@@ -90,6 +105,7 @@ const Cart = () => {
 };
 
 export default Cart;
+
 
 
 

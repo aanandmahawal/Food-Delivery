@@ -116,3 +116,45 @@ const PlaceOrder = () => {
 }
 
 export default PlaceOrder
+
+
+
+// 🔹 Q1. What is the role of the PlaceOrder component?
+// Answer:
+// It collects user delivery details and initiates a Stripe payment session for placing the order.
+// It verifies cart status and user login before proceeding.
+
+// 🔹 Q2. How is form input managed in this component?
+// Answer:
+// Each input is a controlled component linked to the data state.
+// onChangehandler dynamically updates the corresponding field in the state object.
+
+// 🔹 Q3. What happens after form submission?
+// Answer:
+// The form is submitted via placeOrder(), which constructs the full order and hits the /order/place endpoint.
+// If successful, the user is redirected to a Stripe session_url.
+
+// 🔹 Q4. How is cart data attached to the order?
+// Answer:
+// It loops through food_list, checks quantities from cartItems, and appends them to the order with a quantity field.
+// This forms the items payload sent to the backend.
+
+// 🔹 Q5. How does the component ensure only valid sessions proceed to order?
+// Answer:
+// Inside useEffect(), it checks if token exists and cart total is non-zero.
+// If not, it redirects the user to the /cart page.
+
+// 🔹 Q6. How are payment totals calculated?
+// Answer:
+// getTotalCartAmount() provides the subtotal, and $2 is added as a delivery fee unless subtotal is zero.
+// This is shown both in UI and used in the amount sent to backend.
+
+// 🔹 Q7. Why is window.location.replace(session_url) used?
+// Answer:
+// It redirects the user to the Stripe checkout page for secure payment.
+// This method also prevents users from navigating back to the form page.
+
+// 🔹 Q8. How would you improve error handling in this component?
+// Answer:
+// Use try-catch blocks around API calls and show toast notifications instead of alert().
+// Add client-side validation for phone, zip, and email formats.

@@ -11,18 +11,15 @@ import orderRouter from "./routes/orderRoute.js";
 const app=express()
 const port=process.env.PORT || 4000;
 
-const allowedOrigins = [
-  "http://localhost:5174",
-  "http://localhost:5173"
-];
+
 
 
 //middleware
 app.use(express.json());
 
 const allowedOrigins = [
-  "https://food-delivery-admin-jrra.onrender.com",
-  "https://food-delivery-frontend-5lem.onrender.com"
+  "http://localhost:5174",
+  "http://localhost:5173"
 ];
 
 app.use(cors({

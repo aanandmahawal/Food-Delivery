@@ -69,3 +69,42 @@ const List = ({url}) => {
 }
 
 export default List
+
+
+
+
+
+// 🔹 Q1. What is the main purpose of the List component?
+// Answer:
+// It displays a list of all food items with options to view and delete them.
+// It fetches data from the backend and renders it dynamically.
+
+// 🔹 Q2. Why is useEffect used in this component?
+// Answer:
+// useEffect ensures fetchList() runs once when the component mounts.
+// This loads the food list automatically on initial render.
+
+// 🔹 Q3. What does fetchList() function do?
+// Answer:
+// It sends a GET request to fetch all food items from the backend.
+// If successful, it updates the list state; else, it shows an error toast.
+
+// 🔹 Q4. How is item deletion handled in this component?
+// Answer:
+// removeFood() sends a POST request with the item's ID to delete it.
+// After deletion, fetchList() is called again to refresh the UI.
+
+// 🔹 Q5. Why is toast used in both success and error cases?
+// Answer:
+// toast provides user feedback on actions like successful deletion or failure.
+// This improves UX by confirming outcomes without page reloads.
+
+// 🔹 Q6. Why is key={index} used in the map function?
+// Answer:
+// It uniquely identifies each row for React’s reconciliation process.
+// However, using item._id would be a more reliable unique key.
+
+// 🔹 Q7. How is dynamic image rendering handled?
+// Answer:
+// Images are displayed using src={${url}/images/ + item.image}.
+// This builds the full image path from the server dynamically.

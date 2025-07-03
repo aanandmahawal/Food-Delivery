@@ -76,3 +76,35 @@ const LoginPopup = ({setShowLogin}) => {
 }
 
 export default LoginPopup
+
+
+
+// 🔹 Q1. What is the purpose of the LoginPopup component?
+// Answer:
+// It provides a modal popup for both login and signup functionality.
+// It toggles between the two modes using currState.
+
+// 🔹 Q2. How is user input handled in the form?
+// Answer:
+// The onChangeHandler updates the data state for each input field.
+// This ensures controlled components are in sync with React state.
+
+// 🔹 Q3. How does the component handle API calls?
+// Answer:
+// It sends a POST request to either /login or /register based on currState.
+// On success, the token is saved to localStorage and global state via setToken.
+
+// 🔹 Q4. What is the function of setShowLogin(false)?
+// Answer:
+// It hides the popup once the user successfully logs in or signs up.
+// This is a parent-provided method to control visibility.
+
+// 🔹 Q5. How is the user session persisted across reloads?
+// Answer:
+// The token is stored in localStorage after login or registration.
+// It allows session persistence until the user logs out or clears storage.
+
+// 🔹 Q6. What accessibility or UX improvements would you suggest?
+// Answer:
+// Add proper ARIA labels, focus trapping, and form validation feedback.
+// You could also add loading states and password visibility toggling.

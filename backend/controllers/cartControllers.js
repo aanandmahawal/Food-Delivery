@@ -52,3 +52,37 @@ const getCart=async(req,res)=>{
 }
 
 export {addToCart,removeFromCart,getCart}
+
+
+
+
+
+// 🔹 Q1. What is the purpose of addToCart function?
+// Answer:
+// It adds a food item to the user's cart by incrementing the quantity or initializing it.
+// Then it updates the user's cartData in the MongoDB collection.
+
+// 🔹 Q2. How does removeFromCart work?
+// Answer:
+// It decreases the quantity of a specific item from the user's cart.
+// If the quantity is more than zero, it decrements it and updates the DB.
+
+// 🔹 Q3. What type of data structure is used for cartData?
+// Answer:
+// It is an object where keys are item IDs and values are quantities.
+// This allows O(1) access and updates for cart operations.
+
+// 🔹 Q4. How is user data retrieved in each function?
+// Answer:
+// userModel.findById() or findOne() is used to fetch user data by ID.
+// This ensures operations are specific to the current user.
+
+// 🔹 Q5. Why is findByIdAndUpdate() used after modifying the cart?
+// Answer:
+// It saves the updated cart back into the user's document in the database.
+// This ensures changes persist across sessions.
+
+// 🔹 Q6. How would you handle invalid item IDs in addToCart?
+// Answer:
+// Add a check to validate item ID against the product catalog before updating.
+// Respond with an error if the item doesn't exist in the food database.

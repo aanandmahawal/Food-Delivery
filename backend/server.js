@@ -18,8 +18,8 @@ const port=process.env.PORT || 4000;
 app.use(express.json());
 
 const allowedOrigins = [
-  "http://localhost:5174",
-  "http://localhost:5173"
+  "https://food-delivery-frontend-5lem.onrender.com",
+  "https://food-delivery-admin-jrra.onrender.com"
 ];
 
 app.use(cors({

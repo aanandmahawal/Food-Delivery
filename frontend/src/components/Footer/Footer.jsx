@@ -41,3 +41,33 @@ const Footer = () => {
 }
 
 export default Footer;
+
+
+
+
+// 🔹 Q1. What is the purpose of the Footer component?
+// Answer:
+// It provides company branding, navigation links, and contact details at the bottom of the page.
+// It also includes social media icons and copyright info.
+
+// 🔹 Q2. How are social media icons displayed in the footer?
+// Answer:
+// They are imported from the assets object and displayed as <img> elements.
+// This keeps the design visually consistent with the rest of the app.
+
+// 🔹 Q3. How is the footer layout structured?
+// Answer:
+// It uses three main content sections: left (branding), center (company links), and right (contact info).
+// This provides a clean and organized layout.
+
+// 🔹 Q4. What improvements would you suggest for accessibility?
+// Answer:
+// Add meaningful alt text to all icons and wrap links in anchor <a> tags.
+// This makes the footer more screen-reader and SEO friendly.
+
+// 🔹 Q5. How would you make the footer responsive for mobile devices?
+// Answer:
+// Use flex-wrap or media queries to stack sections vertically on smaller screens.
+// Also ensure font sizes and spacing adjust fluidly.
+
+

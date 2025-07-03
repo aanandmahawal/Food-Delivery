@@ -70,3 +70,4 @@ export default Footer;
 // Use flex-wrap or media queries to stack sections vertically on smaller screens.
 // Also ensure font sizes and spacing adjust fluidly.
 
+

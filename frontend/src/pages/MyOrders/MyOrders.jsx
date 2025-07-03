@@ -55,8 +55,6 @@ export default MyOrders
 
 
 
-
-
 // 🔹 Q1. What is the purpose of the MyOrders component?
 // Answer:
 // It displays a list of all orders placed by the currently logged-in user.

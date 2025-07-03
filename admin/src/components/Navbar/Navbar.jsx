@@ -13,6 +13,7 @@ const Navbar = () => {
 export default Navbar
 
 
+
 // 🔹 Q1. What is the role of the assets object in this component?
 // Answer:
 // It provides centralized access to image imports like logo and profile.

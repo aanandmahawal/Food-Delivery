@@ -119,9 +119,6 @@ export default PlaceOrder
 
 
 
-
-
-
 // 🔹 Q1. What is the role of the PlaceOrder component?
 // Answer:
 // It collects user delivery details and initiates a Stripe payment session for placing the order.
@@ -161,4 +158,3 @@ export default PlaceOrder
 // Answer:
 // Use try-catch blocks around API calls and show toast notifications instead of alert().
 // Add client-side validation for phone, zip, and email formats.
-

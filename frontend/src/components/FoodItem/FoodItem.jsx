@@ -39,6 +39,7 @@ export default FoodItem
 
 
 
+
 // 🔹 Q1. What does the FoodItem component represent?
 // Answer:
 // It renders a single food item with image, name, description, and price.

@@ -39,7 +39,6 @@ export default Verify
 
 
 
-
 // 🔹 Q1. What is the role of the Verify component?
 // Answer:
 // It handles payment verification after a user completes the Stripe checkout.
@@ -69,4 +68,5 @@ export default Verify
 // Answer:
 // Add a loading spinner or success/failure message while verifying.
 // Implement error handling for network failures and invalid params.
+
 

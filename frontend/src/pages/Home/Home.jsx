@@ -23,7 +23,6 @@ export default Home
 
 
 
-
 // 🔹 Q1. What is the purpose of the Home component?
 // Answer:
 // It serves as the main landing page that combines all core sections: header, menu, food list, and app download.

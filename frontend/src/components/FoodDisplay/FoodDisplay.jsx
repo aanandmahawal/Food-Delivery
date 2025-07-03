@@ -27,7 +27,6 @@ export default FoodDisplay
 
 
 
-
 // 🔹 Q1. What is the main purpose of the FoodDisplay component?
 // Answer:
 // It shows a list of food items filtered by the selected category.
@@ -52,4 +51,5 @@ export default FoodDisplay
 // Answer:
 // Use conditional rendering to show a loading spinner or fallback message.
 // This improves UX when data is unavailable or still fetching.
+
 

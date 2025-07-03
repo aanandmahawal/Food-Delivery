@@ -19,6 +19,12 @@ const allowedOrigins = [
 
 //middleware
 app.use(express.json());
+
+const allowedOrigins = [
+  "https://food-delivery-admin-jrra.onrender.com",
+  "https://food-delivery-frontend-5lem.onrender.com"
+];
+
 app.use(cors({
   origin: allowedOrigins,
     credentials : true

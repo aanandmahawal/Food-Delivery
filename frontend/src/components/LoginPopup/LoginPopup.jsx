@@ -79,6 +79,7 @@ export default LoginPopup
 
 
 
+
 // 🔹 Q1. What is the purpose of the LoginPopup component?
 // Answer:
 // It provides a modal popup for both login and signup functionality.

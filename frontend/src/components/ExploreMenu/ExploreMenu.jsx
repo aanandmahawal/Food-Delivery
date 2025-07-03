@@ -30,7 +30,6 @@ export default ExploreMenu
 
 
 
-
 // 🔹 Q1. What does the ExploreMenu component do?
 // Answer:
 // It displays a list of food categories the user can explore.

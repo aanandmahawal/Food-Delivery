@@ -14,4 +14,16 @@ export const assets ={
     parcel_icon
 }
 
-export const url = 'http://localhost:4000'
+export const url = 'https://food-delivery-backend-3q5b.onrender.com'
+
+
+
+// 🔹 Q1. Why are image assets imported in a separate file instead of directly in components?
+// Answer:
+// It helps centralize and organize all assets, making components cleaner.
+// This approach also simplifies updates, as assets can be managed from one place.
+
+// 🔹 Q2. Why is the backend URL defined as a constant in this file?
+// Answer:
+// It avoids hardcoding API URLs across components and improves maintainability.
+// For production, environment variables should be used to switch URLs easily.

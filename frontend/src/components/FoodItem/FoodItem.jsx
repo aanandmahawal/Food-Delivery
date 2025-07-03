@@ -36,3 +36,36 @@ const FoodItem = ({id,name,price,description,image}) => {
 }
 
 export default FoodItem
+
+
+
+
+// 🔹 Q1. What does the FoodItem component represent?
+// Answer:
+// It renders a single food item with image, name, description, and price.
+// It also includes cart interaction buttons for adding or removing items.
+
+// 🔹 Q2. How is the cart functionality implemented here?
+// Answer:
+// Using useContext, it accesses global cartItems, addToCart, and removeFromCart functions.
+// It conditionally renders a quantity counter if the item is already in the cart.
+
+// 🔹 Q3. Why is the image URL built using url + /images/ + image?
+// Answer:
+// The backend serves uploaded images under the /images path.
+// This allows correct rendering of dynamic food item images.
+
+// 🔹 Q4. What happens when the add icon is clicked?
+// Answer:
+// The addToCart(id) function is triggered to increment the item count in global state.
+// If the item wasn’t previously in the cart, it’s initialized to 1.
+
+// 🔹 Q5. Why is !cartItems[id] used in the condition?
+// Answer:
+// It checks whether the current item exists in the cart.
+// If not, it displays a single "Add" icon instead of the quantity counter.
+
+// 🔹 Q6. How can this component be optimized for accessibility?
+// Answer:
+// Add alt text for all images and use semantic buttons instead of <img> for actions.
+// Also include ARIA labels for better screen reader support.

@@ -1,19 +1,19 @@
-import React, { useContext } from 'react'
-import './FoodItem.css'
-import { assets } from '../../assets/assets'
-import { StoreContext } from '../../context/StoreContext'
+import React, { useContext } from 'react';
+import './FoodItem.css';
+import { assets } from '../../assets/assets';
+import { StoreContext } from '../../context/StoreContext';
 
 const FoodItem = ({ id, name, price, description, image }) => {
   const { cartItems, addToCart, removeFromCart, url } = useContext(StoreContext);
 
-  // Defensive: ensure cartItems and id are valid before using
-  const quantity = cartItems?.[id] || 0;
+  // Defensive: validate `id` before accessing cartItems
+  const quantity = id ? (cartItems?.[id] ?? 0) : 0;
 
   const handleAdd = () => {
     if (typeof addToCart === 'function' && id) {
       addToCart(id);
     } else {
-      console.warn("addToCart or id is not available");
+      console.warn("addToCart function or valid id is not available.");
     }
   };
 
@@ -21,14 +21,17 @@ const FoodItem = ({ id, name, price, description, image }) => {
     if (typeof removeFromCart === 'function' && id) {
       removeFromCart(id);
     } else {
-      console.warn("removeFromCart or id is not available");
+      console.warn("removeFromCart function or valid id is not available.");
     }
   };
+
+  // Fallback image handling (optional)
+  const imageUrl = image ? `${url}/images/${image}` : assets.fallback_image;
 
   return (
     <div className='food-item'>
       <div className="food-item-img-container">
-        <img className='food-item-image' src={`${url}/images/${image}`} alt={name} />
+        <img className='food-item-image' src={imageUrl} alt={name || 'food item'} />
 
         {quantity > 0 ? (
           <div className='food-item-counter'>
@@ -43,17 +46,18 @@ const FoodItem = ({ id, name, price, description, image }) => {
 
       <div className="food-item-info">
         <div className="food-item-name-rating">
-          <p>{name}</p>
+          <p>{name ?? 'Unnamed dish'}</p>
           <img src={assets.rating_starts} alt="Rating stars" />
         </div>
-        <p className="food-item-desc">{description}</p>
-        <p className="food-item-price">${price}</p>
+        <p className="food-item-desc">{description ?? 'No description available.'}</p>
+        <p className="food-item-price">${price ?? '--'}</p>
       </div>
     </div>
   );
 };
 
 export default FoodItem;
+
 
 
 

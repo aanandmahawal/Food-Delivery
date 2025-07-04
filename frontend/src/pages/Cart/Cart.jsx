@@ -18,8 +18,10 @@ const Cart = () => {
         </div>
         <br />
         <hr />
-        {food_list.map((item, index) => {
-          if (cartItems[item._id] > 0) {
+        {food_list
+  .filter(item => item && item._id)
+  .map((item, index) => {
+          if (item._id && cartItems[item._id] > 0) {
             return (
               <div>
                 <div className='cart-items-title cart-items-item'>
@@ -75,9 +77,6 @@ const Cart = () => {
 }
 
 export default Cart
-
-
-
 
 
 

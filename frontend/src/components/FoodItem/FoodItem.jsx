@@ -4,10 +4,10 @@ import { assets } from '../../assets/assets';
 import { StoreContext } from '../../context/StoreContext';
 
 const FoodItem = ({ id, name, price, description, image }) => {
-  const { cartItems, addToCart, removeFromCart, url } = useContext(StoreContext);
+  const { cartItems = {}, addToCart, removeFromCart, url } = useContext(StoreContext);
 
-  // Defensive: validate `id` before accessing cartItems
-  const quantity = id ? (cartItems?.[id] ?? 0) : 0;
+  // Gracefully handle quantity
+  const quantity = id && cartItems[id] ? cartItems[id] : 0;
 
   const handleAdd = () => {
     if (typeof addToCart === 'function' && id) {
@@ -18,20 +18,19 @@ const FoodItem = ({ id, name, price, description, image }) => {
   };
 
   const handleRemove = () => {
-    if (typeof removeFromCart === 'function' && id) {
+    if (typeof removeFromCart === 'function' && id && cartItems[id] > 0) {
       removeFromCart(id);
     } else {
-      console.warn("removeFromCart function or valid id is not available.");
+      console.warn("removeFromCart function or valid id is not available or item not in cart.");
     }
   };
 
-  // Fallback image handling (optional)
-  const imageUrl = image ? `${url}/images/${image}` : assets.fallback_image;
+  const imageUrl = image ? `${url}/images/${image}` : assets?.fallback_image || "";
 
   return (
     <div className='food-item'>
       <div className="food-item-img-container">
-        <img className='food-item-image' src={imageUrl} alt={name || 'food item'} />
+        <img className='food-item-image' src={imageUrl} alt={name || 'food item'} loading="lazy" />
 
         {quantity > 0 ? (
           <div className='food-item-counter'>
@@ -46,19 +45,17 @@ const FoodItem = ({ id, name, price, description, image }) => {
 
       <div className="food-item-info">
         <div className="food-item-name-rating">
-          <p>{name ?? 'Unnamed dish'}</p>
+          <p>{name || 'Unnamed Dish'}</p>
           <img src={assets.rating_starts} alt="Rating stars" />
         </div>
-        <p className="food-item-desc">{description ?? 'No description available.'}</p>
-        <p className="food-item-price">${price ?? '--'}</p>
+        <p className="food-item-desc">{description || 'No description available.'}</p>
+        <p className="food-item-price">${price !== undefined ? price.toFixed(2) : '--'}</p>
       </div>
     </div>
   );
 };
 
 export default FoodItem;
-
-
 
 
 
